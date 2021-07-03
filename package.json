@@ -5,9 +5,9 @@
   "main": "server/server.js",
   "proxy": "http://localhost:3000",
   "scripts": {
-    "client:build": "cd client && npm run build",
+    "client": "cd client && npm run build",
     "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run client:build",
+    "heroku-postbuild": "npm run install-client && npm run client",
     "start:local": "npm run client:build && nodemon server.js",
     "server": "nodemon server.js",
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
