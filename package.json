@@ -1,0 +1,24 @@
+{
+  "name": "react-node-tensorflowjs-mnist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "proxy": "http://localhost:3000",
+  "scripts": {
+    "client:build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run client:build",
+    "start:local": "npm run client:build && nodemon server.js",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^2.8.5",
+    "concurrently": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}

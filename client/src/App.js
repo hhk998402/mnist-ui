@@ -20,9 +20,10 @@ class App extends Component {
     console.log(this.state)
   }
 
-  handleInputChange(data) {
+  handleInputChange = (data) =>  {
+    console.log("data change", data);
     this.setState({data})
-    console.log(this.state.data)
+    console.log("State changed: ", this.state.data)
   }
 
   render() {
@@ -33,7 +34,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo"/>
             <h1 className="App-title">MNIST Digit Recognition</h1>
           </header>
-          <FileCards data={this.state.data} onCHange={this.handleInputChange}/>
+          <FileCards data={this.state.data} onChange={this.handleInputChange}/>
           <Result data={this.state.data}/>
         </div>
       </MuiThemeProvider>

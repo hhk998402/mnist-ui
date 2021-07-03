@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 
-const request = require('superagent')
+const request = require('superagent');
 
 /**
  * Converts RGBA image to greyscale.
@@ -130,7 +130,7 @@ class InputCanvas extends Component {
       this.setState({drawing: false})
       const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data
       const rescaledImage = rescale(toGreyscale(imageData), 28)
-      const req = request.post('/image/upload-json')
+      const req = request.post(`/image/upload-json`)
       req.set('Content-Type', 'application/json')
       req.send(JSON.stringify(rescaledImage))
       req.end((err, res) => {
@@ -138,13 +138,14 @@ class InputCanvas extends Component {
           throw err
         }
         this.setState({r: res.body.message})
-        console.log(res)
+        console.log(res.body)
         this.handleInputChange(res.body.result)
       })
     }
   }
 
   handleInputChange(data) {
+    console.log("Data1", data)
     this.setState({data})
     this.props.onChange(this.state.data)
   }

@@ -27,7 +27,9 @@ class FileCards extends Component {
     this.setState({slideIndex: value})
   }
 
-  handleInputChange(data) {
+  handleInputChange = (data) =>  {
+    console.log("Data", data)
+    console.log("this", this);
     this.setState({data})
     this.props.onChange({data})
     console.log(this.state.data)
@@ -38,14 +40,10 @@ class FileCards extends Component {
       <div>
         <Tabs value={this.state.slideIndex} onChange={this.handleChange}>
           <Tab label="Draw digit" value={0}/>
-          <Tab label="Upload file" value={1}/>
         </Tabs>
         <Swipeable index={this.state.slideIndex} onChangeIndex={this.handleChange}>
           <div>
             <InputCanvas data={this.props.data} onChange={this.handleInputChange}/>
-          </div>
-          <div style={styles.slide}>
-            <Dropzone onChange={this.handleInputChange}/>
           </div>
         </Swipeable>
       </div>
